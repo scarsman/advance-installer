@@ -3,7 +3,7 @@
   <id>IPFSTestService</id>
   <!-- Display name of the service -->
   <name>IPFS Test Service</name>
-  <env name="IPFS_PATH" value="C:\.ipfs" />
+  <!-- <env name="IPFS_PATH" value="C:\.ipfs" /> -->
   <!-- Service description -->
   <description>IPFS daemon run as a service</description>
   <!-- Path to the executable, which should be started -->
