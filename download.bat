@@ -1,4 +1,5 @@
 @echo off
+SET IPFS_PATH = %ALLUSERSPROFILE%\.ipfs
 SET curr_dir="%~dp0"
 cd %curr_dir%
 
