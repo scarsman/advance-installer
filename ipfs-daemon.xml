@@ -1,8 +1,8 @@
 <configuration>
   <!-- ID of the service. It should be unique accross the Windows system-->
-  <id>IPFSTestService</id>
+  <id>IPFSTestDaemon</id>
   <!-- Display name of the service -->
-  <name>IPFS Test Service</name>
+  <name>IPFS Test Daemon</name>
     <env name="IPFS_PATH" value="C:\ProgramData\.ipfs" /> 
   <!-- Service description -->
   <description>IPFS daemon run as a service</description>
