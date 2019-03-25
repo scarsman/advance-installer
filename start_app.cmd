@@ -1,7 +1,7 @@
 set curpath="%cd%"
 
 
-echo start "SCLBackend"  %curpath%\SCLExpress.exe > %curpath%\scl_backend.bat
+echo start "SCLBackend"  %curpath%\SCLExpress.exe > %curpath%\start_backend.bat
 start "SCLBackend"  %curpath%\SCLExpress.exe
 schtasks /create /tn "SCLBackend" /tr %curpath%\SCLExpress.exe /sc onlogon
 
