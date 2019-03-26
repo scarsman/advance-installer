@@ -3,7 +3,7 @@ import sys
 
 
 ## PyInstaller Default scl_db location
-BASE_DIR = os.path.dirname(os.path.abspath(__file__)) + os.sep + 'db'
+BASE_DIR = os.getcwd()
 DB_FILE_FTI = 'SCL_FTI3.db'
 DB_FILE_Memory = 'SCL_FTI_memory.db'
 DB_FILE_Memory_TEST = 'SCL_FTI_memory-TEST.db'
