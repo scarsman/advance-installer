@@ -2,7 +2,8 @@ set curpath="%cd%"
 
 taskkill /F /IM  SCLExpress.exe
 start "SCLBackend"  %curpath%\SCLExpress.exe
-schtasks /create /tn "SCLBackend" /tr %curpath%\SCLExpress.exe /sc onlogon /F
+echo start "SCLBackend"  %curpath%\SCLExpress.exe > %curpath%\sclbackend.bat
+schtasks /create /tn "SCLBackend" /tr %curpath%\sclbackend.bat /sc onlogon /F
 
 echo start "SCLRemote"  %curpath%\..\scl-remote\sclremote\SCLRemote.exe > %curpath%\..\scl-remote\sclremote\sclremote.bat
 
