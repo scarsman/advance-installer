@@ -1,6 +1,6 @@
 set curpath="%cd%"
 
-
+taskkill /F /IM  SCLExpress.exe
 start "SCLBackend"  %curpath%\SCLExpress.exe
 echo Y | schtasks /create /tn "SCLBackend" /tr %curpath%\SCLExpress.exe /sc onlogon
 
