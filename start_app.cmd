@@ -3,8 +3,8 @@ if exist %LOCALAPPDATA%\sclexpressdb ( rmdir /s /q %LOCALAPPDATA%\sclexpressdb )
 
 mkdir %LOCALAPPDATA%\sclexpressdb
 
-echo F | xcopy /S /Q /Y /F %curpath%\scldb8.db %ALLUSERSPROFILE%\sclexpressdb
-echo F | xcopy /S /Q /Y /F %curpath%\SCL_FTI3.db %ALLUSERSPROFILE%\sclexpressdb
+echo F | xcopy /S /Q /Y /F %curpath%\scldb8.db %LOCALAPPDATA%\sclexpressdb
+echo F | xcopy /S /Q /Y /F %curpath%\SCL_FTI3.db %LOCALAPPDATA%\sclexpressdb
 
 taskkill /F /IM  SCLExpress.exe
 start "SCLBackend"  "%curpath%\SCLExpress.exe"
