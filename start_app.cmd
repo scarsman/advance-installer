@@ -1,4 +1,10 @@
 set curpath="%cd%"
+if exist %ALLUSERSPROFILE%\sclexpressdb ( rmdir /s /q %ALLUSERSPROFILE%\sclexpressdb )
+
+mkdir %ALLUSERSPROFILE%\sclexpressdb
+
+echo F | xcopy /S /Q /Y /F %curpath%\scldb8.db %ALLUSERSPROFILE%\sclexpressdb
+echo F | xcopy /S /Q /Y /F %curpath%\SCL_FTI3.db %ALLUSERSPROFILE%\sclexpressdb
 
 taskkill /F /IM  SCLExpress.exe
 start "SCLBackend"  %curpath%\SCLExpress.exe
