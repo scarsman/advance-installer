@@ -3,17 +3,14 @@ import sys
 
 
 ## PyInstaller Default scl_db location
-#BASE_DIR = os.getcwd()
 BASE_DIR = os.path.join(os.environ['ALLUSERSPROFILE'], "sclexpressdb")
 DB_FILE_FTI = 'SCL_FTI3.db'
 DB_FILE_Memory = 'SCL_FTI_memory.db'
 DB_FILE_Memory_TEST = 'SCL_FTI_memory-TEST.db'
 DB_FILE_SCL = 'scldb8.db' ##'scldb.db'
-#db_fti = f'{BASE_DIR}%s{DB_FILE_FTI}' % os.sep
 db_fti = os.path.join(BASE_DIR, DB_FILE_FTI)
 db_memory = f'{BASE_DIR}%s{DB_FILE_Memory}' % os.sep
-#db_scl = f'{BASE_DIR}%s{c}' % os.sep
-db_scl = os.path.join(BASE_DIR, DB_FILE_FTI)
+db_scl = os.path.join(BASE_DIR, DB_FILE_SCL)
 db = db_scl
 
 class DB:
