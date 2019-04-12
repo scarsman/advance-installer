@@ -25,8 +25,7 @@ mkdir %curpath%\scl-installer\scl-remote
 if not exist %curpath%\scl-winapp (
 git clone -b development --single-branch https://scarsman@bitbucket.org/shortcut-lab/scl-winapp.git
 cd %curpath%\scl-winapp
-)
-else (
+) else (
 cd %curpath%\scl-winapp
 git status -uno --porcelain | find /i "DB_Connect.py" && git add * && git commit -am "commit local changes" || echo "no changes"
 git fetch origin development
@@ -38,6 +37,9 @@ curl -s https://raw.githubusercontent.com/scarsman/advance-installer/master/scl.
 
 :: download pyinstaller db_connect
 curl -s https://raw.githubusercontent.com/scarsman/advance-installer/master/pyinstaller-db-connect.py -o %temp%\DB_Connect.py
+
+:: download syncthing bat 
+curl -s https://raw.githubusercontent.com/scarsman/advance-installer/master/syncthing.cmd -o %temp%\syncthing.cmd
 
 :: download start_app.cmd
 curl -s https://raw.githubusercontent.com/scarsman/advance-installer/master/start_app.cmd -o %temp%\start_app.cmd
@@ -57,7 +59,8 @@ call electron-packager scl_interface\scl_app --platform=win32 --arch=x64 scl_app
 echo F | xcopy /S /Q /Y /F scl_backend\dist\SCLExpress.exe %curpath%\scl-installer\scl-backend
 echo F | xcopy /S /Q /Y /F scl_backend\scl_db\db\scldb8.db %curpath%\scl-installer\scl-backend
 echo F | xcopy /S /Q /Y /F scl_backend\scl_db\db\SCL_FTI3.db %curpath%\scl-installer\scl-backend
-:: manually tasks in scheduler; comment when running via advanced installer
+echo F | xcopy /S /Q /Y /F %temp%\syncthing.cmd %curpath%\scl-installer\scl-backend
+:: manually add tasks in scheduler; comment when running via advanced installer
 echo F | xcopy /S /Q /Y /F %temp%\start_app.cmd %curpath%\scl-installer\scl-backend
 
 :: copy frontend to installer folder
