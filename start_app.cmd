@@ -23,4 +23,3 @@ schtasks /create /tn "SCLRemote" /tr "'%curpath%..\scl-remote\sclremote\sclremot
 
 schtasks /create /tn "Syncthing" /tr "'%curpath%..\scl-remote\syncthing\syncthing.bat'" /sc onlogon /F
 
-exit
