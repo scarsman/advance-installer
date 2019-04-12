@@ -9,7 +9,7 @@ cx-Freeze==5.1.1
 dropbox==9.3.0
 EasyProcess==0.2.5
 eyeD3==0.8.8
-Flask==0.12.2
+Flask>=0.12.2
 Flask-Cors==3.0.3
 future==0.17.1
 idna==2.7
