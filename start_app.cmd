@@ -1,7 +1,5 @@
 set curpath=%~dp0
-if exist "%LOCALAPPDATA%\sclexpressdb" rmdir /s /q "%LOCALAPPDATA%\sclexpressdb"
-
-mkdir "%LOCALAPPDATA%\sclexpressdb"
+if not exist "%LOCALAPPDATA%\sclexpressdb" mkdir "%LOCALAPPDATA%\sclexpressdb"
 
 echo F | xcopy /S /Q /Y /F "%curpath%\scldb8.db" "%LOCALAPPDATA%\sclexpressdb"
 echo F | xcopy /S /Q /Y /F "%curpath%\SCL_FTI3.db" "%LOCALAPPDATA%\sclexpressdb"
