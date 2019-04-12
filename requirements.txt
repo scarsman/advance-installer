@@ -41,3 +41,5 @@ bs4
 watchdog
 numpy
 scipy
+setuptools
+
