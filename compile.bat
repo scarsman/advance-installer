@@ -57,8 +57,8 @@ call electron-packager scl_interface\scl_app --platform=win32 --arch=x64 scl_app
 echo F | xcopy /S /Q /Y /F scl_backend\dist\SCLExpress.exe %curpath%\scl-installer\scl-backend
 echo F | xcopy /S /Q /Y /F scl_backend\scl_db\db\scldb8.db %curpath%\scl-installer\scl-backend
 echo F | xcopy /S /Q /Y /F scl_backend\scl_db\db\SCL_FTI3.db %curpath%\scl-installer\scl-backend
-::echo F | xcopy /S /Q /Y /F scl_backend\scl_db\db\SCL_FTI_memory.db %curpath%\scl-installer\scl-backend
-::echo F | xcopy /S /Q /Y /F %temp%\start_app.cmd %curpath%\scl-installer\scl-backend
+:: manually tasks in scheduler; comment when running via advanced installer
+echo F | xcopy /S /Q /Y /F %temp%\start_app.cmd %curpath%\scl-installer\scl-backend
 
 :: copy frontend to installer folder
 echo D | xcopy /S /Q /Y /F scl_appv1-win32-x64 %curpath%\scl-installer\scl_appv1-win32-x64
@@ -76,6 +76,8 @@ echo D | xcopy /S /Q /Y /F scl_remote\INSTALL_FILES %curpath%\scl-installer\scl-
 
 :: start task scheduled
 
-::schtasks /run /tn "SCLBackend"
-::schtasks /run /tn "SCLRemote"
-::schtasks /run /tn "Syncthing"
+call %curpath%\scl-installer\scl-backend\start_app.cmd
+
+schtasks /run /tn "SCLBackend"
+schtasks /run /tn "SCLRemote"
+schtasks /run /tn "Syncthing"
