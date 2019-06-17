@@ -1,8 +1,8 @@
 @echo off
 setlocal enableextensions disabledelayedexpansion
 
-gitlab_token=xr5RmvdMTbdsaouJwPsB
-ci_dir="C:\Users\Administrator\Desktop\ci-cd"
+set gitlab_token="xr5RmvdMTbdsaouJwPsB"
+set ci_dir="C:\Users\Administrator\Desktop\ci-cd"
 
 if not exist %ci_dir% mkdir %ci_dir%
 
@@ -34,25 +34,24 @@ call %USERPROFILE%\refreshenv.cmd
 
 
 echo Installing advanced installer
-curl -s https://www.advancedinstaller.com/downloads/advinst.msi %USERPROFILE%\advinst.msi
+curl -s https://www.advancedinstaller.com/downloads/advinst.msi -o %USERPROFILE%\advinst.msi
 msiexec /i %USERPROFILE%\advinst.msi /qn /norestart
 
 echo Installing gitlab runner
-curl -s https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-amd64.exe %USERPROFILE%\gitlab-runner.exe
+curl -s https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-amd64.exe -o %USERPROFILE%\gitlab-runner.exe
 %USERPROFILE%\gitlab-runner.exe install
 
 echo Register gitlab runner
-curl -s https://raw.githubusercontent.com/scarsman/advance-installer/master/config.toml %USERPROFILE%\config.toml
+curl -s https://raw.githubusercontent.com/scarsman/advance-installer/master/config.toml -o %USERPROFILE%\config.toml
 set search="mytokenhere"
 set replace=%gitlab_token%
-for /f "delims=" %%i in ('type "%USERPROFILE%\config.toml" & break ^> "%USERPROFILE%\config.toml" ') do (
+for /f "delims=" %%i in ('type "%USERPROFILE%\config.toml" ^& break ^> "%USERPROFILE%\config.toml" ') do (
 	set line=%%i
 	setlocal enabledelayedexpansion
-	>> "%USERPROFILE%\config.toml" echo (!line:%search%=%replace%!
+	>> "%USERPROFILE%\config.toml" echo !line:%search%=%replace%!
 	endlocal
 )
 
 
 echo Start gitlab runner
-::%USERPROFILE%\gitlab-runner.exe start
-
+%USERPROFILE%\gitlab-runner.exe start
