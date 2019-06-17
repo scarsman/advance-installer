@@ -1,7 +1,7 @@
 @echo off
 setlocal enableextensions disabledelayedexpansion
 
-set gitlab_token="xr5RmvdMTbdsaouJwPsB"
+set gitlab_token="%1"
 set ci_dir="C:\Users\Administrator\Desktop\ci-cd"
 
 if not exist %ci_dir% mkdir %ci_dir%
