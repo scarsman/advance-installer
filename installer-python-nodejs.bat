@@ -42,7 +42,7 @@ curl -s https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-
 %USERPROFILE%\gitlab-runner.exe install
 
 echo Register gitlab runner
-%USERPROFILE%\gitlab-runner.exe register --url https://gitlab.com/ --registration-token %gitlab_token% --executor shell --name ci-runner
+::%USERPROFILE%\gitlab-runner.exe register --url https://gitlab.com/ --registration-token %gitlab_token% --executor shell --name ci-runner
 curl -s https://raw.githubusercontent.com/scarsman/advance-installer/master/config.toml -o %USERPROFILE%\config.toml
 set search="mytokenhere"
 set replace=%gitlab_token%
