@@ -5,6 +5,8 @@ set gitlab_token="%1"
 set ci_dir="C:\Users\Administrator\Desktop\ci-cd"
 
 if not exist %ci_dir% mkdir %ci_dir%
+if not exist %ci_dir%\scl_installer mkdir %ci_dir%\scl_installer
+
 
 ::download python3.6, requirements, refresh cmd env
 curl -s https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe -o %USERPROFILE%\python-3.6.8-amd64.exe
@@ -39,6 +41,7 @@ msiexec /i %USERPROFILE%\advinst.msi /qn /norestart
 
 echo Installing gitlab runner
 curl -s https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-amd64.exe -o %USERPROFILE%\gitlab-runner.exe
+%USERPROFILE%\gitlab-runner.exe uninstall
 %USERPROFILE%\gitlab-runner.exe install
 
 echo Register gitlab runner
@@ -49,8 +52,8 @@ type %USERPROFILE%\config.toml.temp >> %USERPROFILE%\config.toml
 del %USERPROFILE%\config.toml.temp
 
 echo Start gitlab runner
-%USERPROFILE%\gitlab-runner.exe restart
+%USERPROFILE%\gitlab-runner.exe start
 
 echo Installing git
-curl -s https://github.com/git-for-windows/git/releases/download/v2.22.0.windows.1/Git-2.22.0-32-bit.exe -o %USERPROFILE%\Git-2.22.0-32-bit.exe
-%USERPROFILE%\Git-2.22.0-32-bit.exe /quiet
+curl -s https://github.com/git-for-windows/git/releases/download/v2.22.0.windows.1/Git-2.22.0-64-bit.exe -o %USERPROFILE%\Git-2.exe
+%USERPROFILE%\Git-2.exe /quiet
