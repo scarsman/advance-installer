@@ -42,10 +42,10 @@ curl -s https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-
 %USERPROFILE%\gitlab-runner.exe install
 
 echo Register gitlab runner
-::%USERPROFILE%\gitlab-runner.exe register --url https://gitlab.com/ --registration-token %gitlab_token% --executor shell --name ci-runner
-curl -s https://raw.githubusercontent.com/scarsman/advance-installer/master/config.toml -o %USERPROFILE%\config.toml
-set search="mytokenhere"
-set replace=%gitlab_token%
+%USERPROFILE%\gitlab-runner.exe register --non-interactive --url https://gitlab.com/ --registration-token %gitlab_token% --executor shell --name ci-runner --output-limit 10240 --builds-dir %ci_dir% --custom_build_dir-enabled
+::curl -s https://raw.githubusercontent.com/scarsman/advance-installer/master/config.toml -o %USERPROFILE%\config.toml
+set search="concurrent = 1"
+set replace="concurrent = 3"
 for /f "delims=" %%i in ('type "%USERPROFILE%\config.toml" ^& break ^> "%USERPROFILE%\config.toml" ') do (
 set line=%%i
 setlocal enabledelayedexpansion
@@ -56,4 +56,3 @@ endlocal
 
 echo Start gitlab runner
 %USERPROFILE%\gitlab-runner.exe start
-
