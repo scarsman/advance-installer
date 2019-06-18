@@ -2,7 +2,8 @@
 setlocal enableextensions disabledelayedexpansion
 
 if [%~1]==[] (
-  echo Error. No gitlab token supplied
+  echo Error. No gitlab token supplied.
+  pause
   exit
 )
 
