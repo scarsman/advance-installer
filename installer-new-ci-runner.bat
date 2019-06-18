@@ -1,6 +1,11 @@
 @echo off
 setlocal enableextensions disabledelayedexpansion
 
+if [%~1]==[] (
+  echo Error. No gitlab token supplied
+  exit
+)
+
 set gitlab_token="%1"
 set ci_dir="C:\Users\Administrator\Desktop\ci-cd"
 
