@@ -14,7 +14,7 @@ Flask-Cors==3.0.3
 future==0.17.1
 idna==2.7
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 macholib==1.11
 MarkupSafe==1.0
 mutagen==1.41.1
