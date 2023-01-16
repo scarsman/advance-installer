@@ -21,7 +21,7 @@ mutagen==1.41.1
 pathlib==1.0.1
 patool==1.12
 pefile==2018.8.8
-psutil==5.4.8
+psutil==5.6.6
 pycparser==2.19
 PyInstaller==3.4
 PyMySQL==0.9.2
